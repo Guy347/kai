@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบติดตามของหาย - Nature Lost & Found</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome สำหรับ Icon Nature & UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="day-mode">
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Nature Find</span>
+        </div>
+        <div class="theme-toggle">
+            <button id="themeToggleBtn" aria-label="เปลี่ยนธีม">
+                <i class="fa-solid fa-sun" id="themeIcon"></i>
+                <span id="themeText">โหมดกลางวัน</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Section: แบบฟอร์มแจ้งของหาย / แจ้งพบของ -->
+        <section class="card form-section">
+            <h2><i class="fa-solid fa-pen-to-square"></i> แจ้งเรื่องของหาย / พบของ</h2>
+            <form id="lostFoundForm">
+                <div class="form-group">
+                    <label for="type">ประเภทรายการ</label>
+                    <select id="type" required>
+                        <option value="LOST">ตามหาของหาย (Lost)</option>
+                        <option value="FOUND">แจ้งพบของ (Found)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemName">ชื่อสิ่งของ</label>
+                    <input type="text" id="itemName" placeholder="เช่น กระเป๋าสตางค์, กุญแจรถ" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">หมวดหมู่</label>
+                        <select id="category" required>
+                            <option value="เอกสาร/บัตร">เอกสาร/บัตร</option>
+                            <option value="อุปกรณ์ไอที">อุปกรณ์ไอที</option>
+                            <option value="กระเป๋า/กระเป๋าสตางค์">กระเป๋า/กระเป๋าสตางค์</option>
+                            <option value="เครื่องประดับ">เครื่องประดับ</option>
+                            <option value="อื่นๆ">อื่นๆ</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">วันที่เกิดเหตุ</label>
+                        <input type="date" id="date" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">สถานที่ (ที่หาย หรือ ที่พบ)</label>
+                    <input type="text" id="location" placeholder="เช่น สวนสาธารณะ, อาคาร A ชั้น 2" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">ข้อมูลติดต่อกลับ</label>
+                    <input type="text" id="contact" placeholder="เบอร์โทรศัพท์ หรือ Line ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="details">รายละเอียดเพิ่มเติม</label>
+                    <textarea id="details" rows="3" placeholder="ลักษณะพิเศษ เช่น สี, สัญลักษณ์..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    <i class="fa-solid fa-paper-plane"></i> บันทึกข้อมูล
+                </button>
+            </form>
+        </section>
+
+        <!-- Section: แสดงรายการทั้งหมด -->
+        <section class="list-section">
+            <div class="list-header">
+                <h2><i class="fa-solid fa-list-check"></i> รายการทั้งหมด</h2>
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" placeholder="ค้นหาชื่อของ หรือสถานที่...">
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="ALL">ทั้งหมด</button>
+                <button class="filter-btn" data-filter="LOST">ตามหาของหาย</button>
+                <button class="filter-btn" data-filter="FOUND">แจ้งพบของ</button>
+            </div>
+
+            <div id="loading" class="loading-spinner hidden">
+                <i class="fa-solid fa-spinner fa-spin"></i> กำลังดึงข้อมูลจาก Google Sheet...
+            </div>
+
+            <div id="itemsContainer" class="items-grid">
+                <!-- รายการจะถูกสร้างด้วย JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
