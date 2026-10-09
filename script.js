@@ -2,7 +2,7 @@
 // 1. ตั้งค่า GOOGLE APPS SCRIPT WEB APP URL
 // ==========================================
 // เปลี่ยน URL ตรงนี้เป็น URL ของ Google Apps Script ของคุณ
-const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyEkqbW9oeONI-eeKicv5SNSTuZaPXpz8M_Xwaw8izemGNFn1X6zkH4fSyKtnvR6Zjy_Q/exec";
 
 let itemsData = [];
 let currentFilter = 'ALL';
